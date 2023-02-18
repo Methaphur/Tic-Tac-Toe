@@ -102,7 +102,7 @@ def game(board,player):
         Y = move("O")
         if Y == None: break 
 
-def introductions(N):
+def instructions(N):
     sample_board = []
     k = 1
     for i in range(N):
@@ -121,7 +121,7 @@ def play_game():
     player_2 = input("Enter second player's name: ")
     players = {"X":player_1 , "O":player_2 }
     board = generate_board(N)
-    introductions(N)
+    instructions(N)
     game(board,players)
 
 play_game()
