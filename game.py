@@ -63,9 +63,15 @@ def tie(board):
     return True
     
 def game(board,player):
-    moves = {1:(0,0),2:(0,1),3:(0,2),       
-         4:(1,0),5:(1,1),6:(1,2),
-         7:(2,0),8:(2,1),9:(2,2)}
+    def move_make(N):  
+        board = [[(i,j) for j in range(N)] for i in range(N)]
+        move = []
+        for i in board:
+            move += i
+        moves = {i+1:move[i] for i in range(N*N)}
+
+        return moves
+    moves = move_make(len(board))
     def move(char):
         user_move = int(input(f"Enter player {player[char]}'s ({char}) move: "))
         row,column = moves[user_move]
@@ -116,7 +122,7 @@ def instructions(N):
     print(f'Each player has one move per turn ')
 
 def play_game():
-    N = 3
+    N = int(input("Enter size of board: "))
     player_1 = input("Enter first player's name: ")
     player_2 = input("Enter second player's name: ")
     players = {"X":player_1 , "O":player_2 }
